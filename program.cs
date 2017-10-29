@@ -167,4 +167,40 @@ class Programa{
 		}
 	}
 
+	//método para determinar si un triangulo es equilatero, isósceles o escaleno
+	public static void determinarTipoTriangulo(){
+		int lado;
+		string opcion;
+		int[] lados = new int[3];
+		bool[] valores = new bool[3];  
+
+		for (int i = 0;i <= lados.Length-1; i++) {
+			lado = i + 1;
+			Console.Write("Ingrese el valor del lado{0}: ",lado);
+			valores [i] = int.TryParse (Console.ReadLine (), out lados [i]); 
+		}
+
+		if (valores [0] && valores [1] && valores [2]) {
+			Console.WriteLine ("valor lado1: {0} lado2: {1} lado3: {2}", lados [0], lados [1], lados [2]);
+			
+			if (lados [0] == lados [1] && lados [0] == lados [2] && lados[1] == lados[2]) {
+				Console.WriteLine ("Todos sus lados son iguales, el triangulo es EQUILATERO");
+			}else if(lados[0] != lados[1] && lados[0] != lados[2] && lados[1] != lados[2]){
+				Console.WriteLine ("Todos sus lados son diferentes, el triangulo es ESCALENO");
+			}else if((lados[0] == lados[1] && lados[0] != lados[2]) || (lados[0] != lados[1] && 
+				lados[0] == lados[2]) || (lados[1] == lados[2] && lados[0] != lados[1]) ||
+				(lados[1] == lados[2] && lados[0] != lados[2])){
+				Console.WriteLine ("Dos lados son iguales y uno diferente, el triangulo es ISÓSCELES");
+				}
+			Console.ReadLine ();
+
+		} else {
+			Console.WriteLine ("¡ERROR los valores ingresados de los lados no son validos! ¿desea ingresar un nuevo los valores? yes/no");
+			opcion = Console.ReadLine ();
+			if (opcion == "yes" || opcion == "y") {
+				determinarTipoTriangulo ();
+			}
+		}
+	}	
+	
 }//final clase

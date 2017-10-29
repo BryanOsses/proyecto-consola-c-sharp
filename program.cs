@@ -7,7 +7,48 @@ class Programa{
 	}
 
 	private static void crearMenu(string titulo, string autor){
+		int opcion = 0; 
 		
+		Console.Clear();
+		do {			
+			dibujarMenu(20, 1, 60, 15);
+			dibujarMenu (20, 17, 60, 19);
+			escribirMensaje(((20+60)/2)-autor.Length/2,18,autor);
+			escribirMensaje(((20+60)/2)-titulo.Length/2,2,titulo);
+			escribirMensaje(21, 4, "1. cantidad de dias vividos");
+			escribirMensaje(21,5,"2. numero decimal a binario");
+			escribirMensaje(21,6,"3. determinar si un numero es primo");
+			escribirMensaje(21,7,"4. determinar el tipo de un triangulo");
+			escribirMensaje(21,14,"0. salir de la aplicación: ");
+			//Console.WriteLine("Opcion="+opcion);
+			if(int.TryParse(Console.ReadLine (),out opcion)){
+				switch (opcion){
+					case 1:
+						Console.Clear();
+						diasFechaNacimiento();	
+						Console.Clear();
+						break;
+					case 2:
+						Console.Clear();
+						numeroAbinario();
+						Console.Clear();
+						break;	
+					case 3:
+						Console.Clear();
+						esNumeroPrimo();
+						Console.Clear();
+						break;
+					case 4:
+						Console.Clear();
+						determinarTipoTriangulo();
+						Console.Clear();
+						break;
+					case 0:
+						Console.Clear();
+						break;
+				}
+			}
+		}while(opcion != 0);
 	}
 	
 	//método para dibujar Menú en consola

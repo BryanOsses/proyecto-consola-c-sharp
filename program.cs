@@ -9,7 +9,8 @@ class Programa{
 	private static void crearMenu(string titulo, string autor){
 		
 	}
-
+	
+	//método para dibujar Menú en consola
 	private static void dibujarMenu(int x, int y, int x1, int y1){
 		//Console.WriteLine("x={0}, x1={1}, y={2}, y1={3}",x,x1,y,y1);
 
@@ -50,5 +51,11 @@ class Programa{
 			Console.SetCursorPosition (x1, i);
 			Console.WriteLine ("║");
 		}
+	}
+
+	//método para imprimir mensajes en pantalla
+	private static void escribirMensaje(int x, int y, string mensaje){
+		Console.SetCursorPosition(x,y);
+		Console.Write(mensaje);
 	}
 }

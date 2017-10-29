@@ -137,4 +137,34 @@ class Programa{
 		}
 	}
 	
+	//método para determinar si un numero es primo
+	public static void esNumeroPrimo(){
+
+		int numero,divisores=0;
+		string opcion;
+
+		Console.Write ("Ingrese el valor a evaluar: ");
+		if (int.TryParse (Console.ReadLine (), out numero)) {
+
+			for (int i = 1; i <= numero; i++) {
+				if (numero % i == 0) {
+					divisores++;
+				}
+			}
+
+			if (divisores == 2) {
+				Console.WriteLine ("el numero {0} es primo",numero);
+			} else {
+				Console.WriteLine ("el numero {0} NO es primo",numero);
+			}
+			Console.ReadLine ();
+		} else {
+			Console.WriteLine ("¡ERROR el valor ingresado no es valido! ¿desea ingresar un nuevo valor? yes/no");
+			opcion = Console.ReadLine ();
+			if (opcion == "yes" || opcion == "y") {
+				numeroAbinario ();
+			}
+		}
+	}
+
 }//final clase

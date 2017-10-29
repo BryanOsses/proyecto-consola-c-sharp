@@ -58,4 +58,50 @@ class Programa{
 		Console.SetCursorPosition(x,y);
 		Console.Write(mensaje);
 	}
-}
+
+	//método para determinar intervalo de tiempo entre dos fechas
+	public static void diasFechaNacimiento(){
+			
+		Console.WriteLine(DateTime.Now);
+		string anio, mes, dia;
+		int comprobacion;
+		string opcion;
+		DateTime fecha;
+
+		Console.Write ("Ingrese dia de Nacimiento: ");
+		dia = Console.ReadLine ();
+		Console.Write ("\nIngrese mes de Nacimiento: ");
+		mes = Console.ReadLine ();
+		Console.Write ("\nIngrese año de Nacimiento: ");
+		anio = Console.ReadLine ();
+
+		if (int.TryParse(anio,out comprobacion) && int.TryParse (mes, out comprobacion)
+			&& int.TryParse (dia, out comprobacion)) {
+			
+			string fNacimiento = string.Format ("{0}/{1}/{2}", dia, mes, anio);
+			if (DateTime.TryParse (fNacimiento, out fecha)) {
+				TimeSpan diasDeVida = DateTime.Now - fecha;
+
+				Console.WriteLine ("usted a vivido "+String.Format("{0:n}",diasDeVida.Days) + " dias desde " + fecha.ToShortDateString()+
+					" hasta " + DateTime.Now.ToShortDateString());
+				Console.ReadLine();
+			} else {
+				Console.WriteLine ("ERROR la fecha {0} que ingreso no es valida!",fNacimiento);
+				Console.WriteLine ("¿desea ingresar la fecha de nuevo? yes/no");
+			    opcion = Console.ReadLine ();
+				if (opcion == "yes" || opcion == "y") {
+					diasFechaNacimiento ();
+				} 
+			}
+			
+		} else {
+
+			Console.WriteLine ("ERROR en el formato ingresado: ¿desea ingresar la fecha de nuevo? yes/no");
+			opcion = Console.ReadLine ();
+			if (opcion == "yes" || opcion == "y") {
+				diasFechaNacimiento ();
+			} 
+		}	
+	}
+	
+}//final clase

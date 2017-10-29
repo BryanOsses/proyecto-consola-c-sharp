@@ -103,5 +103,38 @@ class Programa{
 			} 
 		}	
 	}
+
+	//método para convertir en binario un numero decimal de 8 bits
+	public static void numeroAbinario(){
+
+		string opcion;
+		byte numero = 0;
+		string binario = "",temporal="";
+		byte modulo;
+
+		Console.Write ("Ingrese un valor entero entre 0 y 255: ");
+
+		if(byte.TryParse(Console.ReadLine (),out numero)){
+			do {
+				modulo = (byte)(numero % 2);
+				temporal += modulo;
+				numero = (byte)(numero/2);
+			} while(numero >= 1);
+
+
+			for (int i = temporal.Length-1; i >= 0; i--) {
+				binario += temporal [i];
+			}
+
+			Console.WriteLine("en binario: {0}",binario);
+			Console.ReadLine ();	
+		}else{
+			Console.WriteLine ("¡ERROR el valor ingresado no es valido! ¿desea ingresar un nuevo valor? yes/no");
+			opcion = Console.ReadLine ();
+			if (opcion == "yes" || opcion == "y") {
+				numeroAbinario ();
+			}
+		}
+	}
 	
 }//final clase

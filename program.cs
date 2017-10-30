@@ -368,4 +368,73 @@ class Programa{
 
 	}
 
+	//método juego numero azar
+	public static void juegoNumeroAzar(){
+
+		Random numeroAleatorio = new Random ();
+		int ronda, score1, score2, numRondas,contador, aleatorio, turno;
+		int val1, val2;
+		string player1, player2;
+
+		Console.Write ("Ingrese el numero de rondas a jugar: ");
+		numRondas = int.Parse(Console.ReadLine ());
+		Console.Write ("Ingrese el nombre del primer jugador: ");
+		player1 = Console.ReadLine ();
+		Console.Write ("Ingrese el nombre del segundo jugador: ");
+		player2 = Console.ReadLine ();
+
+		ronda = 0; contador = 0; turno = 0; score1 = 0; score2 = 0;
+		while (contador != numRondas) {
+			ronda++;
+			aleatorio = numeroAleatorio.Next (0, 10);
+			do {
+				Console.Clear();
+				turno++;
+				Console.Write ("|| Ronda numero {0} ||", ronda);
+				Console.Write(" intento numero {0} ||\n",turno);
+				//Console.WriteLine (aleatorio);
+				Console.Write ("Turno Jugador 1 {0} Ingrese un numero: ", player1);
+				val1 = int.Parse(Console.ReadLine ());
+				do{
+					Console.Write ("Turno Jugador 2 {0} Ingrese un numero: ", player2);
+					val2 = int.Parse(Console.ReadLine ());
+					if(val2 == val1){
+						Console.WriteLine("No puede ingresar el mismo valor que el jugador 1 seleccione un valor diferente");
+					}
+				}while(val2 == val1);
+				if(val1 != aleatorio && val2 != aleatorio){
+					Console.WriteLine("ningun numero coincide se repiten los intentos");
+				}else{
+					Console.WriteLine ("CORRECTO El numero aleatorio es: {0}",aleatorio);
+					turno = 0;
+				} 
+				Console.Write("Oprima una tecla para continuar...");
+				Console.ReadLine();
+			} while(val1 != aleatorio && val2 != aleatorio);
+
+			if (val1 == aleatorio) {
+				Console.WriteLine ("Jugador 1 gana la ronda");
+				score1++;
+			} else if (val2 == aleatorio) {
+				Console.WriteLine ("Jugador 2 gana la ronda");
+				score2++;
+			}
+			Console.ReadLine();
+			contador++;
+		}
+
+		//Console.Write (aleatorio + " " + player1 + " " + player2);
+		if (score1 > score2) {
+			Console.WriteLine ("jugador 1 {0} gana la partida con {1} rondas ganadas\njugador 2 {2} pierde la partida con {3} rondas ganadas"
+				, player1, score1, player2, score2);
+		} else if (score1 == score2) {
+			Console.WriteLine ("la partida queda empatada, jugador 1 {0} rondas ganadas {1} jugador 2 {2} rondas ganadas {3}"
+				, player1, score1, player2, score2);
+		} else {
+			Console.WriteLine ("jugador 2 {1} gana la partida con {2} rondas ganadas\njugador 1 {0} pierde la partida con {1} rondas ganadas"
+				, player1, score1, player2, score2);
+		}
+		Console.ReadLine ();
+	}	
+
 }//final clase

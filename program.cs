@@ -277,5 +277,95 @@ class Programa{
 		}
 	}
 
+	//método para determinar si un numero es capicua
+	public static void numeroCapicua(){
+
+		string valorIngresado,opcion;
+		string primerosDigitos, segundosDigitos;
+		int numero, mitad, longitud;
+		bool falso = false;
+
+		Console.Write ("Ingrese un numero (solo digitos): ");
+		if (int.TryParse (valorIngresado = Console.ReadLine (), out numero)) {
+
+			mitad = valorIngresado.Length / 2;
+
+			if (valorIngresado.Length % 2 == 0) {
+
+				//Console.WriteLine (mitad);
+				//Console.WriteLine (valorIngresado.Length - 1);
+				primerosDigitos = valorIngresado.Substring (0,mitad);
+				segundosDigitos = valorIngresado.Substring (mitad, mitad);
+				//Console.Write ("primero digitos: {0}",primerosDigitos);
+				//Console.Write ("segundos digitos: {0}",segundosDigitos);
+
+				//Console.WriteLine (primerosDigitos.Length + " " + segundosDigitos.Length);
+
+				/*
+				for (int i = 0; i < valorIngresado.Length; i++) {
+					Console.WriteLine ("Indice {0}: {1}", i, valorIngresado[i]);
+				}
+				*/
+				longitud = mitad -1;
+
+				for (int indice = 0; indice < mitad; indice++) {
+					if (primerosDigitos [indice] != segundosDigitos [longitud]) {
+						falso = true;
+						break;
+					} //else {
+						//Console.WriteLine ("primerosDigitos digito indice {0}: {1} / SegundosDigitos digito indice {2}: {3}",
+							//indice,primerosDigitos[indice],longitud,segundosDigitos[longitud]);
+					//} 
+					longitud--;
+				}
+				//Console.WriteLine (falso);
+
+				if (falso) {
+					Console.WriteLine ("El numero {0} NO es capicua",numero);
+				} else {
+					Console.WriteLine ("El numero {0} es capicua",numero);
+				}
+
+				Console.ReadLine ();
+			} else if (valorIngresado.Length % 2 != 0) {
+
+				//Console.WriteLine (mitad);
+
+				primerosDigitos = valorIngresado.Substring (0,mitad);
+				segundosDigitos = valorIngresado.Substring (mitad+1, mitad);
+				//Console.Write ("primero digitos: {0}",primerosDigitos);
+				//Console.Write ("segundos digitos: {0}",segundosDigitos);
+
+				longitud = mitad -1;
+
+				for (int indice = 0; indice < mitad; indice++) {
+					if (primerosDigitos [indice] != segundosDigitos [longitud]) {
+						falso = true;
+						break;
+					} //else {
+						//Console.WriteLine ("primerosDigitos digito indice {0}: {1} / SegundosDigitos digito indice {2}: {3}",
+							//indice,primerosDigitos[indice],longitud,segundosDigitos[longitud]);
+					//} 
+					longitud--;
+				}
+
+				if (falso) {
+					Console.WriteLine ("El numero {0} NO es capicua",numero);
+				} else {
+					Console.WriteLine ("El numero {0} es capicua",numero);
+				}
+
+				Console.ReadLine ();
+			}
+		} else {
+			Console.Write ("ERROR el valor ingresado no corresponde a un numero, ¿desea volver a ingresar otro numero? yes/no: ");
+			opcion = Console.ReadLine ();
+			if (opcion == "yes" || opcion == "y") {
+				cambiaContraseña ();
+			}
+		}
+
+
+	}
 
 }//final clase

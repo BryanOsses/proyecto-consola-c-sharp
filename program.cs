@@ -244,4 +244,38 @@ class Programa{
 		}
 	}	
 	
+	//método intercambiar orden de valores
+	public static void cambiaContraseña(){
+
+		int password = 0;
+		string pass = "", temporal = "";
+		string opcion = "no"; 
+
+		Console.Write ("Ingrese una contraseña que solo consista de digitos y con una longitud de 4 digitos: ");
+		if (int.TryParse (Console.ReadLine (), out password)) {
+			temporal = Convert.ToString(password);
+			if (temporal.Length == 4) {
+				for (int i = temporal.Length-1; i >= 0; i--) {
+					pass += temporal [i];
+				}
+				password = int.Parse (pass);
+				Console.WriteLine ("La contraseña ingresda por usted es: {0} se enviará como: {1}",temporal,password);
+				Console.ReadLine ();
+			} else {
+				Console.Write ("ERROR la conraseña no tiene una longitud exacta a 4, ¿desea volver a ingresar la contraseña? yes/no: ");	
+				opcion = Console.ReadLine ();
+				if (opcion == "yes" || opcion == "y") {
+					cambiaContraseña ();
+				}
+			}
+		} else {
+			Console.Write ("ERROR la contraseña ingresada no consiste de digitos, ¿desea volver a ingresar otra contraseña? yes/no: ");
+			opcion = Console.ReadLine ();
+			if (opcion == "yes" || opcion == "y") {
+				cambiaContraseña ();
+			}
+		}
+	}
+
+
 }//final clase

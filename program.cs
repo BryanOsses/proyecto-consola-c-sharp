@@ -19,6 +19,9 @@ class Programa{
 			escribirMensaje(21,5,"2. numero decimal a binario");
 			escribirMensaje(21,6,"3. determinar si un numero es primo");
 			escribirMensaje(21,7,"4. determinar el tipo de un triangulo");
+			escribirMensaje(21,8,"5. intercambiar orden de contraseña");
+			escribirMensaje(21,9,"6. determinar numero capicua");
+			escribirMensaje(21,10,"7. Juego numero azar");
 			escribirMensaje(21,14,"0. salir de la aplicación: ");
 			//Console.WriteLine("Opcion="+opcion);
 			if(int.TryParse(Console.ReadLine (),out opcion)){

@@ -43,6 +43,21 @@ class Programa{
 						determinarTipoTriangulo();
 						Console.Clear();
 						break;
+					case 5:
+						Console.Clear();
+						cambiaContraseña();
+						Console.Clear();
+						break;
+					case 6:
+						Console.Clear();
+						numeroCapicua();
+						Console.Clear();
+						break;
+					case 7:
+						Console.Clear();
+						juegoNumeroAzar();
+						Console.Clear();
+						break;
 					case 0:
 						Console.Clear();
 						break;
